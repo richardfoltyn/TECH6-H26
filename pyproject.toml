@@ -1,7 +1,42 @@
+[project]
+name = "tech6"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+
 [tool.ruff]
 line-length = 88
 indent-width = 4
 target-version = "py314"
+# Auto-apply safe fixes (for example, unused imports) when Ruff runs with linting.
+fix = true
 
 [tool.ruff.format]
 quote-style = "single"
+# Format Python snippets inside docstrings for consistent examples.
+docstring-code-format = true
+# Match docstring snippet wrapping to the configured line length policy.
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint]
+# Keep explicit rules you already enabled.
+# F401: remove unused imports.
+# F541: drop f-prefix on strings without placeholders.
+# I: normalize and sort imports.
+# B: flake8-bugbear correctness and robustness checks.
+# C4: comprehension style simplifications.
+# SIM: simplify boolean/control-flow patterns.
+# UP: pyupgrade modernizations for Python 3.13.
+# RUF: Ruff-native consistency checks.
+# D, DOC: docstring style checks.
+extend-select = ["F401", "F541", "I", "B", "C4", "SIM", "UP", "RUF"]
+allowed-confusables = ["–"]
+
+[tool.ruff.lint.isort]
+# Normalize `import x as y, z as w` style for stable import diffs.
+combine-as-imports = true
+# Sort imports consistently inside each section.
+force-sort-within-sections = true
+
+[tool.ruff.lint.pydocstyle]
+# Ensure it understands you are using NumPy style format
+convention = "numpy"

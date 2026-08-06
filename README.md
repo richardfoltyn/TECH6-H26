@@ -2,15 +2,21 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-Course material for spring term 2026 (V26) — Author: Richard Foltyn
+Course material for fall term 2026 (H26) — Author: Richard Foltyn
 
 
 ## Course outline
 
 `L` = Lecture, `W` = Workshop
 
-| Week | Date        | L/W | Topic | Notes & Exercises | Solutions |
+| Week | Day         | L/W | Topic | Notes & Exercises | Solutions |
 |------|-------------|-----|-------|-------------------|-----------|
+|  42  | Tue, Oct 13 | `L` | Introduction to scikit-learn | [Notebook](lectures/lecture1/lecture1.ipynb), [PDF](lectures/lecture1/lecture1.pdf) | — |
+|      | Thu, Oct 15 | `W` | Introduction to scikit-learn | [Notebook](workshops/workshop1/workshop1.ipynb), [PDF](workshops/workshop1/workshop1.pdf) | TBA |
+|  43  | Tue, Oct 20 | `L` | Regression models | [Notebook](lectures/lecture2/lecture2.ipynb), [PDF](lectures/lecture2/lecture2.pdf) | — |
+|      | Thu, Oct 22 | `W` | Regression models | [Notebook](workshops/workshop2/workshop2.ipynb), [PDF](workshops/workshop2/workshop2.pdf) | TBA |
+|  44  | Tue, Oct 27 | `L` | Classification models | [Notebook](lectures/lecture3/lecture3.ipynb), [PDF](lectures/lecture3/lecture3.pdf) | — |
+|      | Thu, Oct 29 | `W` | Classification models | [Notebook](workshops/workshop3/workshop3.ipynb), [PDF](workshops/workshop3/workshop3.pdf) | TBA |
 
 
 ## Cloning & forking the repository
