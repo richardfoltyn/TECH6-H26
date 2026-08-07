@@ -2,10 +2,10 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-Course material for **part 2**, fall 2026 (H26) — Author: Richard Foltyn
+Course material for fall 2026 (H26) — Author: Richard Foltyn
 
 
-## Course outline
+## Course outline for part 2
 
 `L` = Lecture, `W` = Workshop
 
