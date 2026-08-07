@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-Course material for fall term 2026 (H26) — Author: Richard Foltyn
+Course material for **part 2**, fall 2026 (H26) — Author: Richard Foltyn
 
 
 ## Course outline
@@ -62,9 +62,11 @@ conda env create -f environment.yml
 
 ## Additional resources
 
-1. [Think Python](https://allendowney.github.io/ThinkPython/index.html) by Allen B. Downey:
+1. [The Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/) by Trevor Hastie, Robert Tibshirani, and Jerome Friedman:
+   comprehensive reference on statistical learning, data mining, and machine learning, available as free PDF.
+2. [Think Python](https://allendowney.github.io/ThinkPython/index.html) by Allen B. Downey:
    general intro to Python, chapters are available as Jupyter notebooks.
-2. [Python for Everybody](https://www.py4e.com/book) by Charles R. Severance:
+3. [Python for Everybody](https://www.py4e.com/book) by Charles R. Severance:
    general intro to Python with a focus on data analysis, available as PDF.
 
 ## License
