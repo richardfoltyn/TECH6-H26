@@ -5,7 +5,7 @@
 Course material for fall 2026 (H26) — Author: Richard Foltyn
 
 
-## Course outline for part 2
+## **Preliminary** course outline for part 2
 
 `L` = Lecture, `W` = Workshop
 
@@ -17,6 +17,8 @@ Course material for fall 2026 (H26) — Author: Richard Foltyn
 |      | Thu, Oct 22 | `W` | Regression models | [Notebook](workshops/workshop2/workshop2.ipynb), [PDF](workshops/workshop2/workshop2.pdf) | TBA |
 |  44  | Tue, Oct 27 | `L` | Classification models | [Notebook](lectures/lecture3/lecture3.ipynb), [PDF](lectures/lecture3/lecture3.pdf) | — |
 |      | Thu, Oct 29 | `W` | Classification models | [Notebook](workshops/workshop3/workshop3.ipynb), [PDF](workshops/workshop3/workshop3.pdf) | TBA |
+
+**Note:** We might also use **week 45** so we have more time to cover the material. The final schedule will be announced at the beginning of part 2.
 
 
 ## Cloning & forking the repository
