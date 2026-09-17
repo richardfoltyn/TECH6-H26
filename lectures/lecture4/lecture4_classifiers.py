@@ -1,5 +1,5 @@
 """
-Helper functions for lecture 3, sections on classifiers.
+Helper functions for lecture 4, sections on classifiers.
 """
 
 from matplotlib.colors import ListedColormap
@@ -186,7 +186,7 @@ def plot_generic_confusion_matrix():
     ann = ['\n'.join(s.split(' ')) for s in ann]
     ann = np.array(ann).reshape(2, 2)
 
-    fig, ax = plt.subplots(figsize=(3, 3))
+    _, ax = plt.subplots(figsize=(3, 3))
     ax.matshow(data, cmap=cm, alpha=1)
 
     # Add annotations
