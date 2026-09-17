@@ -12,4 +12,4 @@
 
 - **Quote style**: Use single quotes (`'...'`) for strings.
 - **Docstrings**: Use NumPy style docstrings.
-- **Formatting & Linting**: Use `ruff` for code formatting and linting. Ruff is installed in the `TECH6` conda environment.
+- **Formatting & Linting**: Always use `ruff` from the `TECH6` conda environment (`conda run -n TECH6 ruff ...`) for code formatting and linting to ensure consistent formatting across systems and prevent version mismatches.
