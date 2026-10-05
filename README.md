@@ -64,6 +64,12 @@ conda env create -f environment.yml
 ```
 
 
+## Guides
+
+See the [guides/](guides/README.md) folder for instructions on how to
+install Conda (Python), Visual Studio Code, and git version control.
+
+
 ## Additional resources
 
 1. [The Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/) by Trevor Hastie, Robert Tibshirani, and Jerome Friedman:
