@@ -4,21 +4,21 @@ channels:
   - nodefaults
 dependencies:
   - python=3.14.7
-  - numpy=2.5.1
-  - scipy=1.18.0
-  - matplotlib=3.11.0
-  - pandas=3.0.5
+  - numpy=2.5.3
+  - scipy=1.18.1
+  - matplotlib=3.11.2
+  - pandas=3.0.6
   - openpyxl=3.1.5
-  - notebook=7.5.7
+  - notebook=7.5.8
   - ipykernel=7.3.0
   - ipython=9.15.0
   - jupyter_client=8.9.1
   - jupyter_core=5.9.1
   - jupyter_server=2.20.0
-  - scikit-learn=1.9.0
+  - scikit-learn=1.9.1
   - seaborn=0.13.2
   - statsmodels=0.14.6
-  - ruff=0.16.7
+  - ruff=0.16.10
   - pip
   - pip:
     - yfinance
