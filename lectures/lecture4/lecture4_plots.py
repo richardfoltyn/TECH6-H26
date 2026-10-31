@@ -214,15 +214,15 @@ def plot_generic_confusion_matrix():
 
     # Artificial data
     data = np.array([[1, 0], [0, 1]])
-    class_names = ['P', 'N']
+    class_names = ['N', 'P']
     # Color map mapping 1 to green, 0 to red
     cm = ListedColormap(['#ffb7b5', '#93feb6'])
     # Square annotations
     ann = [
-        'True positives (TP)',
-        'False negatives (FN)',
-        'False positives (FP)',
         'True negatives (TN)',
+        'False positives (FP)',
+        'False negatives (FN)',
+        'True positives (TP)',
     ]
     ann = ['\n'.join(s.split(' ')) for s in ann]
     ann = np.array(ann).reshape(2, 2)
