@@ -1,32 +1,74 @@
 """
-Helper functions for lecture 4, sections on classifiers.
+Plotting functions for lecture 4.
 """
 
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.stats import logistic
 
 
-def plot_classes(X, y, X_test=None, y_test=None):
+def plot_true_relationship(f):
     """
-    Plot classes in y for given features X. Optionally visualize
-    training and test data separately, if test data is provided.
+    Plot the true relationship as a filled contour plot.
 
     Parameters
     ----------
-    X : array-like of shape (n_samples, 2)
-        Features x1 and x2
-    y : array-like of shape (n_samples,)
-        Response variable
-    X_test : array-like of shape (n_samples, 2), optional
-        Test features x1 and x2
-    y_test : array-like of shape (n_samples,), optional
-        Test response variable
+    f : callable
+        Function of the two features to plot.
+    """
+    # Create coordinates for x1 and x2
+    x = np.linspace(0, 1, 50)
+    x1_grid, x2_grid = np.meshgrid(x, x)
+
+    # Deterministic function f(x1, x2)
+    z = f(x1_grid, x2_grid)
+
+    # Contour plot of deterministic function
+    fig, ax = plt.subplots(figsize=(5.5, 4.5), layout='constrained')
+    levels = np.linspace(-1, 1, 11)
+    cntrf = ax.contourf(x1_grid, x2_grid, z, levels=levels, cmap='RdBu_r', alpha=0.7)
+    CS = ax.contour(x1_grid, x2_grid, z, levels=levels, linewidths=0.5, colors='k')
+    ax.clabel(CS, levels, fontsize=9)
+    fig.colorbar(cntrf, ax=ax, shrink=0.6, label='f($x_1$, $x_2$)')
+    ax.set_xlabel('$x_1$')
+    ax.set_ylabel('$x_2$')
+
+    return ax
+
+
+def plot_sigmoid():
+    """
+    Plot the sigmoid function (logistic CDF).
+    """
+    zvalues = np.linspace(-6, 6, 50)
+
+    _, ax = plt.subplots(layout='constrained')
+    ax.plot(zvalues, logistic.cdf(zvalues), lw=2.0)
+    # Add horizontal and vertical lines
+    for yvalue in (0.0, 0.5, 1.0):
+        ax.axhline(yvalue, ls='--', lw=0.75, c='black')
+    ax.axvline(0.0, ls='--', lw=0.75, c='black')
+    ax.set_xlabel('$z$')
+    ax.set_ylabel(r'$\sigma(z)$')
+    ax.set_yticks([0.0, 0.5, 1.0])
+    ax.set_title('Sigmoid function (logistic CDF)')
+
+    return ax
+
+
+def plot_classes(X, y):
+    """
+    Plot class labels for the given features.
+
+    Parameters
+    ----------
+    X : array
+        Features x1 and x2.
+    y : array
+        Binary class labels, 0 or 1.
     """
     fig, ax = plt.subplots(figsize=(4, 4))
-
-    # Indicator whether test data is provided
-    has_test = X_test is not None
 
     colors = ['steelblue', 'darkred']
     markers = ['o', '*']
@@ -35,7 +77,6 @@ def plot_classes(X, y, X_test=None, y_test=None):
 
     for i in classes:
         mask = y == i
-        label = f'Class {i} (training)' if has_test else f'Class {i}'
         ax.scatter(
             X[mask, 0],
             X[mask, 1],
@@ -44,23 +85,8 @@ def plot_classes(X, y, X_test=None, y_test=None):
             c=colors[i],
             alpha=0.7,
             lw=0.75,
-            label=label,
+            label=f'Class {i}',
         )
-
-        if has_test:
-            mask = y_test == i
-            label = f'Class {i} (test)'
-            ax.scatter(
-                X_test[mask, 0],
-                X_test[mask, 1],
-                s=60,
-                marker=markers[i],
-                c='none',
-                edgecolors=colors[i],
-                alpha=1.0,
-                lw=1.1,
-                label=label,
-            )
 
     ax.set_xlabel('$x_1$')
     ax.set_ylabel('$x_2$')
@@ -71,16 +97,16 @@ def plot_classes(X, y, X_test=None, y_test=None):
 
 def plot_decision_boundary(ax, x, classifier):
     """
-    Plot decision boundary of a classifier on a given axes object.
+    Plot the decision boundary of a classifier on a given Axes object.
 
     Parameters
     ----------
     ax : matplotlib.axes.Axes
-        Axis to plot on.
+        Axes object to plot on.
     x : array-like
         Grid points for x1 and x2.
     classifier : object
-        Classifier object used to predict decision boundary.
+        Fitted classifier used to predict class labels.
 
     """
 
@@ -93,24 +119,43 @@ def plot_decision_boundary(ax, x, classifier):
     colors = ['steelblue', 'darkred']
     cmap = ListedColormap(colors)
 
-    ax.contourf(xx1, xx2, y_pred, cmap=cmap, alpha=0.15, zorder=-10)
-    ax.contour(xx1, xx2, y_pred, colors='black', linewidths=0.5, zorder=-5)
+    # Fixed levels keep class colors consistent and draw one boundary between 0 and 1
+    ax.contourf(
+        xx1, xx2, y_pred, levels=[-0.5, 0.5, 1.5], cmap=cmap, alpha=0.15, zorder=-10
+    )
+    ax.contour(
+        xx1, xx2, y_pred, levels=[0.5], colors='black', linewidths=0.5, zorder=-5
+    )
 
 
 def plot_accuracy_validation_curve(
-    param_range, train_scores, test_scores, xlabel='Parameter C', log_scale=True
+    param_range,
+    train_scores,
+    test_scores,
+    xlabel='Parameter C',
+    log_scale=True,
+    score='Accuracy',
+    title=None,
 ):
     """
-    Plot validation curve with training and test scores
+    Plot a validation curve with training and validation scores.
 
     Parameters
     ----------
     param_range : array-like
         Values of the hyperparameter.
     train_scores : array-like of shape (n_params, n_folds)
-        Training scores for each parameter value.
+        Training scores for each parameter value and fold.
     test_scores : array-like of shape (n_params, n_folds)
-        Test scores for each parameter value.
+        Validation scores for each parameter value and fold.
+    xlabel : str
+        Label for the horizontal axis.
+    log_scale : bool
+        Whether to use a logarithmic scale for the horizontal axis.
+    score : str
+        Metric name for the vertical axis and legend labels.
+    title : str, optional
+        Title for the plot.
     """
 
     # Compute average and standard deviation of scores across folds
@@ -119,14 +164,11 @@ def plot_accuracy_validation_curve(
     test_mean = np.mean(test_scores, axis=1)
     test_std = np.std(test_scores, axis=1)
 
+    train_label = f'Training {score}'
+    validation_label = f'Validation {score}'
+
     plt.figure(figsize=(6, 4))
-    plt.plot(
-        param_range,
-        train_mean,
-        c='black',
-        ls='--',
-        label='Training accuracy',
-    )
+    plt.plot(param_range, train_mean, c='black', ls='--', label=train_label)
     plt.fill_between(
         param_range,
         train_mean + train_std,
@@ -140,10 +182,10 @@ def plot_accuracy_validation_curve(
         test_mean,
         color='steelblue',
         lw=1.5,
-        marker='o',
+        marker='o' if len(test_mean) < 20 else None,
         markersize=4,
         zorder=10,
-        label='Validation accuracy',
+        label=validation_label,
     )
     plt.fill_between(
         param_range,
@@ -153,13 +195,12 @@ def plot_accuracy_validation_curve(
         color='steelblue',
         lw=0,
     )
-    plt.grid(ls=':', alpha=0.25, color='black', zorder=-10)
     if log_scale:
         plt.xscale('log')
     plt.legend()
     plt.xlabel(xlabel)
-    plt.ylabel('Accuracy')
-    plt.title('Validation curve')
+    plt.ylabel(score)
+    plt.title(title or 'Validation curve')
 
     ymin = min(np.amin(test_mean - test_std), np.amin(train_mean - train_std))
     ymin = np.floor(ymin * 10) / 10
@@ -168,7 +209,7 @@ def plot_accuracy_validation_curve(
 
 def plot_generic_confusion_matrix():
     """
-    Plot generic confusion matrix
+    Plot a generic confusion matrix.
     """
 
     # Artificial data
