@@ -18,7 +18,6 @@ Course material for fall 2026 (H26) — Author: Richard Foltyn
 |  44  | Tue, Oct 27 | `L` | Regression models | [Notebook](lectures/lecture3/lecture3.ipynb), [PDF](lectures/lecture3/lecture3.pdf) | — |
 |      | Thu, Oct 29 | `W` | Regression models | [Notebook](workshops/workshop3/workshop3.ipynb), [PDF](workshops/workshop3/workshop3.pdf) | [Notebook](workshops/workshop3/workshop3-solution.ipynb), [PDF](workshops/workshop3/workshop3-solution.pdf) |
 |  45  | Tue, Nov 3  | `L` | Classification models | [Notebook](lectures/lecture4/lecture4.ipynb), [PDF](lectures/lecture4/lecture4.pdf) | — |
-|      | Thu, Nov 5  | `W` | Classification models | [Notebook](workshops/workshop4/workshop4.ipynb), [PDF](workshops/workshop4/workshop4.pdf) | TBA |
 
 
 ## Cloning & forking the repository
